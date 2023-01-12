@@ -16,21 +16,21 @@ class Program
     public static async Task Main()
     {
         // This function shows the current weather
+
         HttpClient client = new HttpClient();
-        string response = await client.GetStringAsync("https://official-joke-api.appspot.com/random_joke");
         // Console.WriteLine(response);
-        var jsonAsDictionary = System.Text.Json.JsonSerializer.Deserialize<Object>(response);
+        string response = await client.GetStringAsync("https://official-joke-api.appspot.com/random_joke");
         // Console.WriteLine(jsonAsDictionary);
+        var jsonAsDictionary = System.Text.Json.JsonSerializer.Deserialize<Object>(response);
         Console.WriteLine("");
+        // Console.WriteLine(jokeNode);
         JsonNode jokeNode = JsonNode.Parse(response)!;
-        // Console.WriteLine(forecastNode);
+        // setup;
         JsonNode setup = jokeNode!["setup"]!;
-        // Console.WriteLine(mainNode);
         Console.WriteLine(setup);
         Console.WriteLine("");
-        // Console.WriteLine(forecastNode);
+        // punchline;
         JsonNode punchline = jokeNode!["punchline"]!;
-        // Console.WriteLine(main1Node);
         Console.WriteLine(punchline);
         Console.WriteLine("");
     }
